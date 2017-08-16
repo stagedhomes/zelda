@@ -14,43 +14,56 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+<section class="container" style="padding: 40px 20px 40px 20px">
+	<div class="row">
+		<div class="col-md-9">
+			<div id="primary" class="content-area">
+				<main id="main" class="site-main" role="main">
+					<?php if ( have_posts() ) : 
+						if ( is_home() && ! is_front_page() ) : ?>
+							<header>
+								<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+							</header>
+						<?php endif; ?>
+					
+						<div class="row">
+							<!-- Blog Post -->
+							<div class="col-md-6">
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<?php
+											/* Start the Loop */
+											while ( have_posts() ) : the_post();
 
-		<?php
-		if ( have_posts() ) :
+												/*
+												 * Include the Post-Format-specific template for the content.
+												 * If you want to override this in a child theme, then include a file
+												 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+												 */
+												get_template_part( 'template-parts/content', get_post_format() );
 
-			if ( is_home() && ! is_front_page() ) : ?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
+											endwhile;
 
-			<?php
-			endif;
+											the_posts_navigation();
 
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+										else :
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+											get_template_part( 'template-parts/content', 'none' );
 
-			endwhile;
+										endif; ?>
+									</div>
+								</div><!-- /panel -->
+							</div><!-- /col -->
+						</div><!-- /row -->
+				</main><!-- #main -->
+			</div><!-- #primary -->
+		</div><!-- /col -->
+		
+		<!-- Right Side | Widgets -->
+		<div class="col-md-3">
+			<?php get_sidebar(); ?>
+		</div><!-- /col -->
+	</div><!-- /row -->
+</section><!-- /container -->
 
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif; ?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php
-get_sidebar();
-get_footer();
+<?php get_footer();

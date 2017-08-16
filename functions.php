@@ -93,10 +93,10 @@ function zelda_widgets_init() {
 		'name'          => esc_html__( 'Sidebar', 'zelda' ),
 		'id'            => 'sidebar-1',
 		'description'   => esc_html__( 'Add widgets here.', 'zelda' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'before_widget' => '<section id="%1$s" class="panel panel-default %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<div class="panel-heading space-bottom-10"><h3 class="panel-title widget-title">',
+		'after_title'   => '</h3></div>',
 	) );
 }
 add_action( 'widgets_init', 'zelda_widgets_init' );
@@ -116,6 +116,18 @@ function zelda_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'zelda_scripts' );
+
+/**
+ * Register global variables.
+ */
+function fnRegisterGlobals() {
+	// Location of all S3 SHC assets.
+	$GLOBALS["global_s3Assets"] = "https://d2itdnqewolu1g.cloudfront.net";
+	$GLOBALS["global_webTemplate"] = "https://d2itdnqewolu1g.cloudfront.net/web-templates/the_project_1.4/html/template";
+}
+add_action("parse_query", "fnRegisterGlobals");
+
+
 
 /**
  * Implement the Custom Header feature.
@@ -141,3 +153,8 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * Removes extra <p> tags.
+ */
+remove_filter('the_content', 'wpautop');
