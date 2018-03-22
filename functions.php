@@ -158,3 +158,28 @@ require get_template_directory() . '/inc/jetpack.php';
  * Removes extra <p> tags.
  */
 remove_filter('the_content', 'wpautop');
+
+/**
+ * Declare support for WooCommerce.
+ */
+add_action( 'after_setup_theme', 'woocommerce_support' );
+function woocommerce_support() {
+    add_theme_support( 'woocommerce' );
+}
+
+/**
+ * Remove WooCommerce breadcrumb.
+ */
+add_action( 'init', 'zelda_remove_wc_breadcrumbs' );
+function zelda_remove_wc_breadcrumbs() {
+    remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
+}
+
+/**
+ * Remove reviews from WooCommerce.
+ */
+add_filter( "woocommerce_product_tabs", "sb_woo_remove_reviews_tab", 98);
+function sb_woo_remove_reviews_tab($tabs) { 
+	unset($tabs["reviews"]);
+	return $tabs;
+}

@@ -1,6 +1,6 @@
 <?php
 /*
-    Template Name: Full Page
+    Template Name: Full Page | Auto Paragraphs
 */
 
 /* ================================================================================
@@ -13,9 +13,10 @@ get_header(); ?>
 <div class="container" style="padding: 40px 20px 40px 20px">
 		<div class="row">
 			<div class="col-md-12 entry-content">
-                <?php the_content(); ?>
+                <?php echo wpautop(get_the_content(), true); ?>
             </div><!-- /col -->
     </div><!-- /row -->
 </div><!-- /container -->
 
 <?php get_footer();
+

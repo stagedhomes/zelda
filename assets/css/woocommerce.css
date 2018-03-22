@@ -1,0 +1,2 @@
+/* Adds padding after the main header. */
+.woocommerce.woocommerce-page #sm-woocommerce-single-product { margin-top: 40px; margin-bottom: 40px; }

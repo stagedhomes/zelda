@@ -23,6 +23,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
+# Footer
 # WordPress Default Formats
 # Contact Form 7
     ## About Us | Contact Form
@@ -30,8 +31,17 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 # Sidebar Widgets
 # Common Formatting
 # FAST Track
+# Home Staging Course
 
 --------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+.subfooter-icons {
+	width: auto;
+	height: 60px !important;
+}
 
 /*--------------------------------------------------------------
 # FAST Track
@@ -69,6 +79,13 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 	#fast-track .outer-box h4 {
 		margin-bottom: 5px;
 	}
+}
+
+/*--------------------------------------------------------------
+# Home Staging Course
+--------------------------------------------------------------*/
+#home-staging-course ul > li > p.lead {
+	margin-bottom: 0;
 }
 
 /*--------------------------------------------------------------
@@ -134,5 +151,8 @@ span.wpcf7-list-item {
 --------------------------------------------------------------*/
 .margin-top-20 { margin-top: 20px; }
 .margin-top-40 { margin-top: 40px !important; }
+.margin-bottom-8 { margin-bottom: 8px; }
 
 .max-width-50p { width: 50%; height: auto; }
+
+.list-style-disc { list-style: disc; }

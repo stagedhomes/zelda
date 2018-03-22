@@ -51,6 +51,7 @@
 	<!-- StagedHomes.com Development -->
 	<link href="https://stagedhomes.com/assets/the-project/css/stagedhomes.css" rel="stylesheet" />
 	<link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/stagedhomes.css" rel="stylesheet" />
+	<link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/woocommerce.css" rel="stylesheet" />
 
 	<?php wp_head(); ?>
 </head>
